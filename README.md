@@ -3,7 +3,7 @@
 ###### *Alice, January 2020*
 ---
 
-This the repository contains the source code related to the paper **"On the Road with 16 Neurons: Mental Imagery withBio-inspired Deep Neural Networks"**.
+This the repository contains the source code related to the paper **"On the Road with 16 Neurons: Mental Imagery with Bio-inspired Deep Neural Networks"**.
 
 The code is written in Keras 2.2.4 using TensorFlow 1.12.0 backend. The scripts are executed with Python 3.6.8. The networks are trained on multiple GPUs with CUDA 10.1.
 <!--T
@@ -50,7 +50,7 @@ Unfortunately, there is no direct way to import in Mathematica a neural model cr
 The downside of this approach is that there is no full compatibility between the neural network modules of Keras and Mathematica. One of the main issues is the different handling of convolution padding, which is done automatically in Keras while in Mathematica is still quite intricate. As a consequence, there seems to be no way to recreate in Mathematica a series of deconvolutional layers as in Keras. So further work is needed.
 -->
 
-
+<!--
 ## Test results
 
 We train and test our model on the [SYNTHIA](http://synthia-dataset.net/) dataset.
@@ -81,7 +81,7 @@ These are the results of testing the recurrent model using the *hallucination* t
 ![](doc/halluc_1.gif)
 
 ![](doc/halluc_4.gif)
-
+-->
 
 ## Contents
 
