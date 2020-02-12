@@ -1,9 +1,9 @@
-# Scene understanding from monocular videos with variational autoencoders and recurrent neural networks
+# On the Road with 16 Neurons: Mental Imagery with Bio-inspired Deep Neural Networks
 
-###### *Alice, January 2020*
+###### *Alice Plebe, Mauro Da Lio (2020).*
 ---
 
-This the repository contains the source code related to the paper **"On the Road with 16 Neurons: Mental Imagery with Bio-inspired Deep Neural Networks"**.
+This repository contains the source code related to the paper *"On the Road with 16 Neurons: Mental Imagery with Bio-inspired Deep Neural Networks"*.
 
 The code is written in Keras 2.2.4 using TensorFlow 1.12.0 backend. The scripts are executed with Python 3.6.8. The networks are trained on multiple GPUs with CUDA 10.1.
 <!--T
