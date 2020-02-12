@@ -1,0 +1,71 @@
+# ===================================================================================================================================================== #
+#
+#	ARCHITECTURE
+#
+# ===================================================================================================================================================== #
+
+seed			1
+
+# order of layers in the architecture (check 'layer_code' nn_arch.py for the dict of considered chars)
+arch_layout		'CCCCFDD-DDRTTTT'
+
+# this computation is fixed, but must be here
+n_conv             	cnfg[ 'arch_layout' ].count( layer_code[ 'conv' ] )    	# total num of convolutions
+n_pool             	cnfg[ 'arch_layout' ].count( layer_code[ 'pool' ] )    	# total num of pooling
+n_dnse             	cnfg[ 'arch_layout' ].count( layer_code[ 'dnse' ] )    	# total num of dense
+n_dcnv             	cnfg[ 'arch_layout' ].count( layer_code[ 'dcnv' ] )   	# total num of deconvolutions
+
+arch_class		'VAE'							# AE / VAE / MVAE - which Class of autoencoder to call
+ref_model		None							# folder containing or the filename of the HDF5 reference model
+
+k_initializer		'HE'							# RUNIF / GLOROT / HE - type of convolution initializer
+k_regularizer		'NONE'							# L2 / NONE - type of convolution regularizer
+
+img_size            	[ 128, 256, 3 ]						# height, width, channels of input images
+latent_size		128							# size of the latent space
+
+# -----	ENCODER --------------------------------------------------------------------------------------------------------------------------------------- #
+conv_filters        	[ 16, 32, 32, 32 ]					# number of kernels for each convolution
+conv_kernel_size    	[ 7, 7, 5, 5 ]						# size of (square) kernels for each convolution
+conv_strides	    	cnfg[ 'n_conv' ] * [ 2 ]				# stride for each convolution
+conv_padding	   	cnfg[ 'n_conv' ] * [ 'same' ]				# same / valid - padding for each convolution
+conv_activation	    	cnfg[ 'n_conv' ] * [ 'relu' ]				# sigmoid / relu - activation function for each convolution
+conv_train		cnfg[ 'n_conv' ] * [ True ]				# False to freeze weights of each convolution during training 
+
+pool_size	   	[]							# pooling size
+
+# -----	LATENT SPACE ---------------------------------------------------------------------------------------------------------------------------------- #
+dnse_size	    	[ 2048, 512, 2048, None ]				# size of each dense layer - last value of the list must be None
+										# as it will be automatically computed
+dnse_activation		cnfg[ 'n_dnse' ] * [ 'relu' ]				# sigmoid / relu - activation function for each dense layer
+dnse_train		cnfg[ 'n_dnse' ] * [ True ]				# False to freeze weights of each dense layer during training
+
+# -----	DECODER --------------------------------------------------------------------------------------------------------------------------------------- #
+dcnv_filters	    	[ 32, 32, 16, 3 ]					# number of kernels for each deconvolution
+dcnv_kernel_size    	[ 5, 5, 7, 7 ]						# size of (square) kernels for each deconvolution
+dcnv_strides	    	cnfg[ 'n_dcnv' ] * [ 2 ]				# stride for each deconvolution
+dcnv_padding	    	cnfg[ 'n_dcnv' ] * [ 'same' ]				# same / valid - padding for each deconvolution
+dcnv_activation	    	( cnfg[ 'n_dcnv' ] - 1 ) * [ 'relu' ] + [ 'sigmoid' ]	# sigmoid / relu - activation function for each convolution
+dcnv_train		cnfg[ 'n_dcnv' ] * [ True ]				# False to freeze weights of each deconvolution during training
+
+
+# ===================================================================================================================================================== #
+#
+#	TRAINING
+#
+# ===================================================================================================================================================== #
+
+dir_dset            	"dataset/synthia/link/rgb_L"					# dataset of images
+data_class		'RGB' 							# RGB / CAR / LANE / MULTI - which kind of image batches to generate
+
+n_epochs            	200							# number of epochs 
+batch_size          	64							# size of minibatches
+lrate			1e-03							# learning rate
+optimizer		'ADAM'							# ADAM / RMS / SDG / ADAGRAD - optimizer
+loss			'BXE'							# MSE / UXE_CAR / UXE_LANE / BXE / CXE - loss function
+kl_wght			1e-06							# weight of KL component in loss function
+kl_incr			0							# increase of KL component in loss function
+
+n_check                 1							# 0 = do nothing / 1 = save best model / n = save n checkpoints
+patience		0							# end training after 'patience' unsuccessful epochs
+tboard			False							# call TensorBoard during training
