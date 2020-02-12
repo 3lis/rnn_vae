@@ -4,14 +4,15 @@
 ---
 
 This repository contains the source code related to the paper *"On the Road with 16 Neurons: Mental Imagery with Bio-inspired Deep Neural Networks"*.
-
+The code is written in Keras using TensorFlow backend.
+<!--
 The code is written in Keras 2.2.4 using TensorFlow 1.12.0 backend. The scripts are executed with Python 3.6.8. The networks are trained on multiple GPUs with CUDA 10.1.
-<!--T
-he neural models obtained from Keras are exported to __Wolfram Mathematica 11.3__ for visualization.
+The neural models obtained from Keras are exported to __Wolfram Mathematica 11.3__ for visualization.
 -->
 
-<img src="doc/net_RMVAE.jpg" height="300">
+<img src="doc/net_RMVAE.jpg" width="500">
 
+<!--
 ## Neural architectures
 
 #### Variational autoencoder
@@ -32,6 +33,7 @@ This architecture is not directed at performing prediction in the long future, b
 
 #### Recurrent model
 The last set of neural models focuses on long-term prediction of future sequences, using as input/output only the latent representations computed by the temporal autoencoders.
+-->
 
 <!--
 | Variational AE         | Topological AE          | Temporal AE              |
