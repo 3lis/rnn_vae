@@ -10,7 +10,7 @@ The code is written in Keras 2.2.4 using TensorFlow 1.12.0 backend. The scripts 
 he neural models obtained from Keras are exported to __Wolfram Mathematica 11.3__ for visualization.
 -->
 
-![](doc/net_RMVAE.pdf)
+![](doc/net_RMVAE.jpg)
 
 
 ## Neural architectures
