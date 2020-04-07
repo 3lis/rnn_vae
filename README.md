@@ -3,7 +3,7 @@
 ###### *Alice Plebe, Mauro Da Lio (2020).*
 ---
 
-This repository contains the source code related to the paper *"On the Road with 16 Neurons: Mental Imagery with Bio-inspired Deep Neural Networks"*.
+This repository contains the source code related to the paper [*"On the Road with 16 Neurons: Mental Imagery with Bio-inspired Deep Neural Networks"*](http://arxiv.org/abs/2003.08745).
 The code is written in Keras using TensorFlow backend.
 <!--
 The code is written in Keras 2.2.4 using TensorFlow 1.12.0 backend. The scripts are executed with Python 3.6.8. The networks are trained on multiple GPUs with CUDA 10.1.
